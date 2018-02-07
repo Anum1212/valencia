@@ -1,0 +1,139 @@
+.section{
+  margin: 15px 0px 15px 0px;
+}
+
+#announcementImage{
+  text-align: center;
+}
+
+/* -------------------------- smartphones, iPhone --------------------------*/
+@media screen and (max-width: 600px)  {
+
+  #mainPageWrapper{
+      margin-top: 100px;
+
+    }
+
+  #announcementImage{
+    text-align: center;
+  }
+
+  #announcementImage img{
+    width: 250px;
+    height: 250px;
+  }
+
+  /* Announcement CAROUSEL */
+#announcementSmallDisplayCarousel .item .myText {
+  /* height: 150px; */
+  min-width: 100%;
+  max-width: none;
+  text-align: center;
+}
+#announcementSmallDisplayCarousel .myText p{
+  font-size: 12px;
+}
+#announcementSmallDisplayCarousel .myText p a{
+  text-decoration: none;
+  color: yellow;
+}
+#largeDisplayCarousel{
+  display: none;
+}
+.individualAnnouncement{
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  height: 6em;
+  background: rgba(42, 46, 140, 1);
+  color: white;
+}
+}
+
+/* -------------------------- tablets, laptops  --------------------------*/
+@media screen and (min-width: 601px)  {
+
+  #mainPageWrapper{
+      margin-top: 65px;
+    }
+
+  #announcementImage{
+    text-align: center;
+  }
+
+  #announcementImage img{
+    width: 550px;
+    height: 250px;
+  }
+
+  /* Announcement CAROUSEL */
+
+  #announcementCarouselDiv{
+    margin-top:45px;
+  }
+#announcementLargeDisplayCarousel .item .myText {
+  min-width: 100%;
+  max-width: none;
+  text-align: center;
+  height: 430px;
+}
+#announcementLargeDisplayCarousel .myText p{
+  font-size: 12px;
+}
+#announcementLargeDisplayCarousel .myText p a{
+  text-decoration: none;
+  color: yellow;
+}
+
+#announcementLargeDisplayCarousel .top{
+  top:-6%;
+    width:100%;
+    height: 20px;
+    background-color: #BD1616;
+    opacity: 1;
+}
+
+#announcementLargeDisplayCarousel .bottom{
+  top:99%;
+    width:100%;
+    height: 20px;
+    background-color: #BD1616;
+    opacity: 1;
+}
+
+#smallDisplayCarousel{
+  display: none;
+}
+
+.individualAnnouncement{
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+  height: 10em;
+  background: rgba(42, 46, 140, 1);
+  color: white;
+}
+#announcementCarouselDiv{
+  border-left: 2px solid #BD1616;
+  height: 500px;
+  padding-top: 38px;
+}
+}
+/* ---------------------------------------tablets laptop Display end-------------------------------------------- */
+
+#announcementTitle h1{
+  font-size: 2em;
+}
+
+#announcementContent p{
+  font-size: 1em;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  background-color: #BD1616; /* Modern Browsers */
+}
+
+#separator{
+  height: 500px;
+  border-left: 2px solid #BD1616;
+}

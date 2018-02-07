@@ -1,0 +1,498 @@
+body{
+  background: rgba(232, 232, 232, 0.25);
+}
+
+/* this css is used to mke proper page jumps w.r.t the fixed nav */
+.anchor{
+  display: block;
+  height: 65px; /*same height as header*/
+  margin-top: -65px; /*same height as header*/
+  visibility: hidden;
+}
+
+/* -------------------------- smartphones, iPhone --------------------------*/
+@media screen and (max-width: 600px)  {
+
+#mainPageWrapper{
+  margin-top:65px;
+}
+  /* TOP CAROUSEL */
+  #topCarousel .carousel .item {
+    height: 300px;
+  }
+  #topCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 300px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+
+
+    /* Announcement CAROUSEL */
+  #announcementSmallDisplayCarousel .item .myText {
+    /* height: 150px; */
+    min-width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+  #announcementSmallDisplayCarousel .myText p{
+    font-size: 12px;
+  }
+  #announcementSmallDisplayCarousel .myText p a{
+    text-decoration: none;
+    color: yellow;
+  }
+  #largeDisplayCarousel{
+    display: none;
+  }
+  .middlePartHeadings{
+    font-size: 2em;
+  }
+
+
+
+  /* Achievements CAROUSEL */
+  #achievementsCarousel .carousel .item {
+    height: 300px;
+  }
+  #achievementsCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 300px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+
+
+  /* Projects CAROUSEL */
+  #projectsCarousel .carousel .item {
+    height: 300px;
+  }
+  #projectsCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 300px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+
+
+  /* Gallery CAROUSEL */
+  #galleryCarousel .carousel .item {
+    height: 300px;
+  }
+  #galleryCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 300px;
+    min-width: 100%;
+    max-width: none;
+  }
+}
+/* -------------------------- smartphones view end -------------------------- */
+
+
+
+
+
+
+
+/* -------------------------- tablets and laptops --------------------------*/
+@media screen and (min-width:601px){
+
+  #mainPageWrapper{
+    margin-top:45px;
+  }
+
+  /* TOP CAROUSEL */
+  #topCarousel .carousel .item {
+    height: 600px;
+  }
+  #topCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 600px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+
+
+    /* Announcement CAROUSEL */
+  #announcementLargeDisplayCarousel .item .myText {
+    /* height: 100px; */
+    min-width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+  #announcementLargeDisplayCarousel .myText p{
+    font-size: 1em;
+  }
+  #announcementLargeDisplayCarousel .myText p a{
+    text-decoration: none;
+    color: yellow;
+  }
+  #announcementLargeDisplayCarousel .carousel-control{
+    width: 25px;
+  }
+
+  .middlePartHeadings{
+    font-size: 2em;
+  }
+  #smallDisplayCarousel{
+    display: none;
+  }
+
+
+
+  /* Achievements CAROUSEL */
+  #achievementsCarousel .carousel .item {
+    height: 600px;
+  }
+  #achievementsCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 600px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+.levels{
+  margin-bottom: 25px;
+}
+
+  /* Projects CAROUSEL */
+  #projectsCarousel .carousel .item {
+    height: 600px;
+  }
+  #projectsCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 600px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+
+
+  /* Gallery CAROUSEL */
+  #galleryCarousel .carousel .item {
+    height: 600px;
+  }
+  #galleryCarousel .item img {
+    top: 0;
+    left: 0;
+    height: 600px;
+    min-width: 100%;
+    max-width: none;
+  }
+
+  .aboutUsContentDetail{
+    padding: 50px;
+  }
+
+  #circularLeftList{
+    float:left;
+    margin-right:100px;
+  }
+  #circularRightList{
+    float:left;
+    margin-left:100px;
+  }
+
+  #aboutUsHexGrid{
+    margin: 0px 0px 0px  60px;
+  }
+}
+/* -------------------------- Tablet laptop view end -------------------------- */
+
+
+
+#topPart{
+  margin: 15px 0px 15px 0px;
+  /* border: 10px solid white; */
+}
+
+#middlePart{
+  margin: 15px 0px 15px 0px;
+  /* border: 10px solid white; */
+}
+
+.middlePartSections{
+  margin: 15px 0px 15px 0px;
+  border-left: 3px solid rgb(184, 3, 3);
+  border-right: 3px solid rgb(184, 3, 3);
+  border-bottom: 3px solid rgb(184, 3, 3);
+  /* border: 10px solid blue; */
+}
+
+.middlePartContents{
+  margin: 40px 0px 40px 0px;
+}
+
+.middlePartHeadings{
+  background: rgb(189, 22, 22);
+  color: white;
+  text-align: center;
+}
+.individualAnnouncement{
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+  height: 6em;
+  background: rgba(42, 46, 140, 1);
+  color: white;
+}
+
+.showBox{
+  margin: 20px 0px 20px 0px;
+  border-top: 2px solid rgb(189, 22, 22);
+}
+
+#circularDownload{
+}
+
+#bottomPart{
+  border: 2px solid #0e83b9;
+  text-align: center;
+}
+
+#bottomPart p>a{
+  text-decoration: none;
+}
+
+
+
+
+
+
+/* -------------------------------- HEX GRID CSS --------------------------------  */
+#hexGrid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1em;
+  list-style-type: none;
+}
+
+.hex {
+  position: relative;
+  visibility: hidden;
+  outline: 1px solid transparent;
+  /* fix for jagged edges in FF on hover transition */
+}
+
+.hex::after {
+  content: '';
+  display: block;
+  padding-bottom: 86.602%;
+  /* =  100 / tan(60) * 1.5 */
+}
+
+.hexIn {
+  position: absolute;
+  width: 96%;
+  padding-bottom: 110.851%;
+  /* =  width / sin(60) */
+  margin: 0 2%;
+  overflow: hidden;
+  visibility: hidden;
+  outline: 1px solid transparent;
+  /* fix for jagged edges in FF on hover transition */
+  -webkit-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+  -ms-transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+  transform: rotate3d(0, 0, 1, -60deg) skewY(30deg);
+}
+
+.hexIn * {
+  position: absolute;
+  visibility: visible;
+  outline: 1px solid transparent;
+  /* fix for jagged edges in FF on hover transition */
+}
+
+.hexLink {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  overflow: hidden;
+  -webkit-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+  -ms-transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+  transform: skewY(-30deg) rotate3d(0, 0, 1, 60deg);
+}
+
+
+/* -------------------------------- HEX GRID CONTENT --------------------------------*/
+
+.hex p {
+  left: -100%;
+  right: -100%;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%;
+  padding-top: 45%;
+  box-sizing: border-box;
+  background-color: #2A2E8C;
+  font-size: 1.2em;
+  text-align: center;
+  line-height: 1em;
+}
+
+.hexIn a{
+  text-decoration: none;
+  color: white;
+}
+
+@media (max-width:650px) {
+.hex p {
+  font-size: 1em;
+  line-height: 15px;
+}
+}
+  @media (min-width:800px){
+.hex p {
+  font-size: 1.2em;
+  line-height: 1em;
+}
+}
+/*** HEXAGON SIZING AND EVEN ROW INDENTATION *****************************************************************/
+
+@media (min-width:1201px) {
+  /* <- 5-4  hexagons per row */
+  #hexGrid {
+    padding-bottom: 4.4%
+  }
+  .hex {
+    width: 10%;
+    /* = 100 / 5 */
+  }
+  /* .hex:nth-child(9n+6) { */
+    /* first hexagon of even rows */
+    /* margin-left: 5%; */
+    /* = width of .hex / 2  to indent even rows */
+  /* } */
+}
+
+@media (max-width: 1200px) and (min-width:901px) {
+  /* <- 4-3  hexagons per row */
+  #hexGrid {
+    padding-bottom: 5.5%
+  }
+  .hex {
+    width: 20%;
+    /* = 100 / 4 */
+  }
+  .hex:nth-child(7n+5) {
+    /* first hexagon of even rows */
+    margin-left: 10%;
+    /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 900px) and (min-width:601px) {
+  /* <- 3-2  hexagons per row */
+  #hexGrid {
+    padding-bottom: 7.4%
+  }
+  .hex {
+    width: 33.333%;
+    /* = 100 / 3 */
+  }
+  .hex:nth-child(5n+4) {
+    /* first hexagon of even rows */
+    margin-left: 16.666%;
+    /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 600px) {
+  /* <- 2-1  hexagons per row */
+  #hexGrid {
+    padding-bottom: 11.2%
+  }
+  .hex {
+    width: 50%;
+    /* = 100 / 3 */
+  }
+  .hex:nth-child(3n+3) {
+    /* first hexagon of even rows */
+    margin-left: 25%;
+    /* = width of .hex / 2  to indent even rows */
+  }
+}
+
+@media (max-width: 400px) {
+  #hexGrid {
+    font-size: 1em;
+  }
+}
+/* -------------------------------- HEX GRID CSS END --------------------------------  */
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------- PROFILE CARD CSS --------------------------------  */
+
+/* -------------------------- smartphones, iPhone --------------------------*/
+@media screen and (max-width: 600px)  {
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width: 200px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    padding-bottom: 10px;
+    background-color: rgba(218, 216, 219, 0.73);
+    margin-bottom: 25px;
+    min-height: 250px;
+  }
+
+  .card img{
+   height:150px;
+   width:150px;
+  }
+}
+
+
+@media screen and (min-width: 601px)  {
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 250px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  padding-bottom: 10px;
+  background-color: rgba(218, 216, 219, 0.73);
+  margin-bottom: 25px;
+  height: 300px;
+}
+
+.card img{
+ height:150px;
+ width:150px;
+}
+}
+
+.card .title {
+  color: grey;
+  font-size: 1em;
+}
+.card p{
+ line-height: 10px;
+}
+/* -------------------------------- Profile Card CSS END --------------------------------  */

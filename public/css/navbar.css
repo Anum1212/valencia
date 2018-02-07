@@ -1,0 +1,93 @@
+
+/* navbar background */
+.navbar-default {
+    background-color: #BD1616;
+    border-color: #d65c14;
+}
+
+/* navbar brand */
+.navbar-default .navbar-brand {
+    color: #ffffff;
+}
+
+/* navbar brand hover */
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: yellow;
+}
+
+/* navbar list */
+.navbar-default .navbar-nav > li > a {
+    color: #ffffff;
+}
+
+/* navbar list hover */
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    color: #ffffff;
+    background: #106306;
+    border-radius: 10px;
+}
+
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background: #106306;
+    border-radius: 4px
+}
+
+.nav .active a { background:#blue!important }
+
+/* Dropdown Clicked*/
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #106306;
+}
+
+/* dropdown caret(small down arrow) color */
+.navbar-default .navbar-nav>.dropdown>a .caret,
+.navbar-default .navbar-nav > .dropdown > a:hover .caret,
+.navbar-default .navbar-nav > .dropdown > a:focus .caret {
+    border-top-color: white;
+    border-bottom-color: white;
+}
+
+/* change dropdown-menu list items color */
+.navbar-default .navbar-nav .open .dropdown-menu>li>a,
+.navbar-default .navbar-nav .open .dropdown-menu {
+    background-color: #BD1616;
+    color: #ffffff;
+}
+
+/* change dropdown-menu color */
+  .navbar-default .navbar-nav .open .dropdown-menu {
+      border-bottom: 3px solid white;
+  }
+
+/* dropdown caret(small down arrow) color when clicked*/
+.navbar-default .navbar-nav > .open > a .caret,
+.navbar-default .navbar-nav > .open > a:hover .caret,
+.navbar-default .navbar-nav > .open > a:focus .caret {
+    border-top-color: white;
+    border-bottom-color: white;
+}
+
+/* toggle button */
+.navbar-default .navbar-toggle {
+    border-color: #ffffff;
+}
+
+/* toggle button hover */
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+    background-color: green;
+}
+
+/* toggle button iconbar i.e 3 lines */
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ffffff;
+}

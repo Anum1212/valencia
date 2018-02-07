@@ -1,0 +1,229 @@
+/* -------------------------- smartphones, iPhone --------------------------*/
+@media screen and (max-width: 600px)  {
+  .menuItemHeading a {
+    font-size: 1em;
+  }
+  }
+
+
+  /* -------------------------- tablets and laptops --------------------------*/
+  @media screen and (min-width:601px){
+    .menuItemHeading a {
+      font-size: 2em;
+    }
+
+  }
+
+  #mainPageWrapper{
+    margin-top:65px;
+  }
+
+  /* ---------------------- siteLogo and adminpanel div ---------------------- */
+  #header {
+    margin-bottom: 30px;
+    min-height: 110px;
+    background-color: #000040;
+    padding: 15px;
+  }
+
+  #siteLogo {
+    text-align: center;
+  }
+
+  #adminPanel {
+    text-align: center;
+  }
+
+  #adminPanel a {
+    text-decoration: none;
+    color: white;
+  }
+
+  /* ---------------------- siteLogo and adminpanel div end ---------------------- */
+
+  #heading h1 {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 80px;
+  }
+
+
+  .menuItem {
+    border-bottom: 2px solid #979399;
+    border-top: 2px solid #979399;
+  }
+
+  .menuItemHeading {
+    background-color: #000040;
+    padding: 15px 0px 15px 0px;
+    text-align: center;
+    height: 60px;
+  }
+
+  .menuItemHeading a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .menuItemContent {
+    margin-top: 30px;
+  }
+
+.oldUploadsButton{
+  text-align: center;
+}
+
+.form{
+  margin-top: 20px;
+}
+
+/*
+********************************
+          Image Upload
+********************************
+*/
+
+  .imageupload.imageupload-disabled {
+    cursor: not-allowed;
+    opacity: 0.60;
+  }
+
+  .imageupload.imageupload-disabled>* {
+    pointer-events: none;
+  }
+
+  .imageupload .panel-title {
+    margin-right: 15px;
+    padding-top: 8px;
+  }
+
+  .imageupload .alert {
+    margin-bottom: 10px;
+  }
+
+  .imageupload .btn-file {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .imageupload .btn-file input[type="file"] {
+    cursor: inherit;
+    display: block;
+    font-size: 1em;
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+  }
+
+  .imageupload .file-tab button {
+    display: none;
+  }
+
+  .imageupload .file-tab .thumbnail {
+    margin-bottom: 10px;
+  }
+
+/*
+********************************
+          File Upload
+********************************
+*/
+  .fileupload.imageupload-disabled {
+    cursor: not-allowed;
+    opacity: 0.60;
+  }
+
+  .fileupload.imageupload-disabled>* {
+    pointer-events: none;
+  }
+
+  .fileupload .panel-title {
+    margin-right: 15px;
+    padding-top: 8px;
+  }
+
+  .fileupload .alert {
+    margin-bottom: 10px;
+  }
+
+  .fileupload .btn-file {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .fileupload .btn-file input[type="file"] {
+    cursor: inherit;
+    display: block;
+    font-size: 100px;
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+  }
+
+  .fileupload .file-tab button {
+    display: none;
+  }
+
+
+/* ---------------------- Menu Item View All Page Css ---------------------- */
+#pageTitle{
+  background: #BD1616;
+  color: white;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+/* ---------------------- Edit Page Css ---------------------- */
+
+/* -------------------------- smartphones, iPhone --------------------------*/
+@media screen and (max-width: 600px)  {
+  #editForm{
+margin-top: 25px;
+  }
+  }
+
+
+  /* -------------------------- tablets and laptops --------------------------*/
+  @media screen and (min-width:801px){
+    #editForm{
+      border-left: 1px solid red;
+      height: 100%;
+    }
+}
+
+/* ---------------------- Message Page Css ---------------------- */
+#adminReply{
+  margin-top: 25px;
+}
+
+#senderMessage{
+  height:100px;
+  border:solid 2px hsl(236, 88%, 36%);
+  border-radius: 6px;
+  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  padding: 5px 25px;
+}
+#adminMessage{
+  height:100px;
+  border:solid 2px#BD1616;
+  border-radius: 6px;
+  overflow:scroll;
+  overflow-x:hidden;
+  overflow-y:scroll;
+  padding: 5px 25px;
+  margin-top: 25px;
+}
+
+#messageSet{
+  margin-bottom: 25px; 
+}
