@@ -25,7 +25,7 @@ class upload_controller extends Controller
         $this->middleware('auth:admin');
     }
 
-    
+
   public function index()
   {
     return view('admin.addContent');
@@ -90,8 +90,8 @@ if(!$req->file('announcementFile') && !$req->file('imageFile'))
 
 // ***************** View All Announcements *****************
      public function viewAllAnnouncements(){
-         $enabledAnnouncements = Announcement::where('status', 1)->paginate(10, ['*'], 'enabledTable');
-         $disabledAnnouncements = Announcement::where('status', 0)->paginate(10, ['*'], 'disabledTable');
+         $enabledAnnouncements = Announcement::where('status', 1)->latest()->paginate(10, ['*'], 'enabledTable');
+         $disabledAnnouncements = Announcement::where('status', 0)->latest()->paginate(10, ['*'], 'disabledTable');
 
          return view('admin.announcement.viewAllAnnouncements',compact('enabledAnnouncements', 'disabledAnnouncements'));
         }
@@ -110,7 +110,7 @@ if(!$req->file('announcementFile') && !$req->file('imageFile'))
             // for file save
       if($req->file('announcementFile'))
        Storage::put('public/myAssets/announcement', $req->announcementFile);
-       
+
       // for image save
       if($req->file('imageFile'))
        Storage::put('public/myAssets/announcement', $req->imageFile);
@@ -139,6 +139,10 @@ if($saveAnnouncement->filetype == '0')
   {
     $saveAnnouncement->filetype = "0"; // because no change
   }
+  $saveAnnouncement->title = $req->announcementTitle;
+  $saveAnnouncement->description = $req->announcementDetails;
+  $saveAnnouncement->save();
+  return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
 }
 
 // only img file present
@@ -156,11 +160,6 @@ if($saveAnnouncement->filetype == '1')
   {
     $saveAnnouncement->filetype = "3"; //fileType becomes 3 because image is already present and file is added
     $saveAnnouncement->filepath = $req->announcementFile->hashName();
-    $saveAnnouncement->title = $req->announcementTitle;
-    $saveAnnouncement->description = $req->announcementDetails;
-    $saveAnnouncement->save();
-    return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
-    // return is must else the code moves to check 3 i.e all files present check and deletes the unloaded file
   }
 
   if($req->file('announcementFile') && Input::hasFile('imageFile'))
@@ -172,6 +171,10 @@ if($saveAnnouncement->filetype == '1')
   {
     $saveAnnouncement->filetype = "1"; // because no change
   }
+  $saveAnnouncement->title = $req->announcementTitle;
+  $saveAnnouncement->description = $req->announcementDetails;
+  $saveAnnouncement->save();
+  return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
 }
 
 // only file present
@@ -181,11 +184,6 @@ if($saveAnnouncement->filetype == '2')
   {
     $saveAnnouncement->filetype = "3"; //fileType becomes 3 because file is already present and image is added
     $saveAnnouncement->imgpath = $req->imageFile->hashName();
-    $saveAnnouncement->title = $req->announcementTitle;
-    $saveAnnouncement->description = $req->announcementDetails;
-    $saveAnnouncement->save();
-    return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
-    // return is must else the code moves to check 3 i.e all files present check and deletes the unloaded file
   }
 
   if($req->file('announcementFile'))
@@ -204,6 +202,10 @@ if($saveAnnouncement->filetype == '2')
   {
     $saveAnnouncement->filetype = "2"; // because no change
   }
+  $saveAnnouncement->title = $req->announcementTitle;
+  $saveAnnouncement->description = $req->announcementDetails;
+  $saveAnnouncement->save();
+  return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
 }
 
 // both files present
@@ -223,13 +225,10 @@ if($saveAnnouncement->filetype == '3')
   // fileType remains same no matter what happens
   $saveAnnouncement->filetype = "3";
 }
-
-
-            $saveAnnouncement->title = $req->announcementTitle;
-            $saveAnnouncement->description = $req->announcementDetails;
-            $saveAnnouncement->save();
-
-             return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
+    $saveAnnouncement->title = $req->announcementTitle;
+    $saveAnnouncement->description = $req->announcementDetails;
+    $saveAnnouncement->save();
+    return redirect()->action('upload_controller@viewAllAnnouncements')->with('message', 'Edit Successful');
         }
 
 // ***************** Enable Specific Announcement *****************
@@ -272,15 +271,17 @@ public function deleteAnnouncementImage($announcementId){
 
              Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
 
-             
+
              // if no file
              if($announcement->filepath==null){
-               $announcement->filetype = '0'; // means no file or image 
+               $announcement->filetype = '0'; // means no file or image
+               $announcement->imgpath = null; //removing image name
                $announcement->save();
               }
               // if file present
               else{
                 $announcement->filetype = '2'; //means now only file left
+                $announcement->imgpath = null; //removing image name
                 $announcement->save();
               }
 
@@ -290,17 +291,19 @@ public function deleteAnnouncementImage($announcementId){
 // ***************** Delete Specific Announcement File *****************
 public function deleteAnnouncementFile($announcementId){
              $announcement = Announcement::find($announcementId);
-             
+
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
-            
+
              // if no image
              if($announcement->imgpath==null){
-               $announcement->filetype = '0'; // means no file or image 
+               $announcement->filetype = '0'; // means no file or image
+               $announcement->filepath = null; //removing file name
                $announcement->save();
               }
               // if image present
               else{
                 $announcement->filetype = '1'; //means now only image left
+                $announcement->filepath = null; //removing file name
                 $announcement->save();
               }
           return redirect()->action('upload_controller@editAnnouncement', [$announcementId]);
@@ -363,11 +366,11 @@ Storage::put('public/myAssets/slider', $req->imageFile);
         $enabledImages = Image::where([
                 ['status', '=', '1'],
                 ['type', '=', '1'],])
-                ->paginate(10, ['*'], 'enabledTable');
+                ->latest()->paginate(10, ['*'], 'enabledTable');
          $disabledImages = Image::where([
                 ['status', '=', '0'],
                 ['type', '=', '1'],])
-                ->paginate(10, ['*'], 'disabledTable');
+                ->latest()->paginate(10, ['*'], 'disabledTable');
                 $imageType='Achievement Images';
          return view('admin.images.viewAllImages',compact('enabledImages', 'disabledImages', 'imageType'));
         }
@@ -376,11 +379,11 @@ Storage::put('public/myAssets/slider', $req->imageFile);
          $enabledImages = Image::where([
                 ['status', '=', '1'],
                 ['type', '=', '2'],])
-                ->paginate(10, ['*'], 'enabledTable');
+                ->latest()->paginate(10, ['*'], 'enabledTable');
          $disabledImages = Image::where([
                 ['status', '=', '0'],
                 ['type', '=', '2'],])
-                ->paginate(10, ['*'], 'disabledTable');
+                ->latest()->paginate(10, ['*'], 'disabledTable');
                 $imageType='OnGoing Project Images';
          return view('admin.images.viewAllImages',compact('enabledImages', 'disabledImages', 'imageType'));
         }
@@ -389,11 +392,11 @@ Storage::put('public/myAssets/slider', $req->imageFile);
          $enabledImages = Image::where([
                 ['status', '=', '1'],
                 ['type', '=', '3'],])
-                ->paginate(10, ['*'], 'enabledTable');
+                ->latest()->paginate(10, ['*'], 'enabledTable');
          $disabledImages = Image::where([
                 ['status', '=', '0'],
                 ['type', '=', '3'],])
-                ->paginate(10, ['*'], 'disabledTable');
+                ->latest()->paginate(10, ['*'], 'disabledTable');
                 $imageType='Gallery Images';
          return view('admin.images.viewAllImages',compact('enabledImages', 'disabledImages', 'imageType'));
         }
@@ -402,11 +405,11 @@ Storage::put('public/myAssets/slider', $req->imageFile);
          $enabledImages = Image::where([
                 ['status', '=', '1'],
                 ['type', '=', '4'],])
-                ->paginate(10, ['*'], 'enabledTable');
+                ->latest()->paginate(10, ['*'], 'enabledTable');
          $disabledImages = Image::where([
                 ['status', '=', '0'],
                 ['type', '=', '4'],])
-                ->paginate(10, ['*'], 'disabledTable');
+                ->latest()->paginate(10, ['*'], 'disabledTable');
                 $imageType='Slider Images';
          return view('admin.images.viewAllImages',compact('enabledImages', 'disabledImages', 'imageType'));
         }
@@ -454,7 +457,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
               Storage::put('public/myAssets/onGoingProjects', $req->imageFile);
               // delete old file
               Storage::delete('public/myAssets/onGoingProjects/'.$saveFormData->imgpath);
-              
+
               $saveFormData->type = $req->imageType;
               $saveFormData->title = $req->imageTitle;
               $saveFormData->imgpath = $req->imageFile->hashName();
@@ -615,7 +618,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       $saveFormData->imgpath = $req->imageFile->hashName();
                       $saveFormData->save();
                       return redirect()->action('upload_controller@viewAllSliderImages');
-                  } 
+                  }
                 } // end of if file type change and image uploaded
 
 // CASE 3
@@ -685,7 +688,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
 
 // CASE 4
 // ***************** if user only changed Title *****************
-            else{ 
+            else{
               $saveFormData->title = $req->imageTitle;
               $saveFormData->save();
               if($req->imageType =='1'){
@@ -821,8 +824,8 @@ public function deleteImage($imageType, $imageId){
 
 // ***************** View All Circulars *****************
      public function viewAllCirculars(){
-         $enabledCirculars = Circular::where('status', 1)->paginate(10, ['*'], 'enabledTable');
-         $disabledCirculars = Circular::where('status', 0)->paginate(10, ['*'], 'disabledTable');
+         $enabledCirculars = Circular::where('status', 1)->latest()->paginate(10, ['*'], 'enabledTable');
+         $disabledCirculars = Circular::where('status', 0)->latest()->paginate(10, ['*'], 'disabledTable');
          return view('admin.circulars.viewAllCirculars',compact('enabledCirculars', 'disabledCirculars'));
         }
 
@@ -917,7 +920,7 @@ public function deleteCircular($circularId){
         {
                 if($req->file('imageFile')){
           Storage::put('public/myAssets/FP', $req->imageFile);
-          
+
               $saveFormData = new Member;
         $saveFormData->type = $req->memberType;
         $saveFormData->name = $req->memberName;
@@ -940,13 +943,13 @@ public function deleteCircular($circularId){
      public function viewAllManagmentCommitteMembers(){
         $enabledMembers = Member::where([
                 ['status', '=', '1'],
-                ['type', '=', '1'],
-                ])->paginate(10, ['*'], 'enabledTable');
+                ['type', '=', '1'],])
+                ->latest()->paginate(10, ['*'], 'enabledTable');
 
              $disabledMembers = Member::where([
                  ['status', '=', '0'],
-                 ['type', '=', '1'],
-                 ])->paginate(10, ['*'], 'disabledTable');
+                 ['type', '=', '1'],])
+                 ->latest()->paginate(10, ['*'], 'disabledTable');
                  $memberType='Committe Members';
          return view('admin.members.viewAllMembers',compact('enabledMembers', 'disabledMembers', 'memberType'));
         }
@@ -954,12 +957,12 @@ public function deleteCircular($circularId){
      public function viewAllFocalMembers(){
          $enabledMembers = Member::where([
                                 ['status', '=', '1'],
-                                ['type', '=', '2'],
-                                 ])->paginate(10, ['*'], 'enabledTable');
+                                ['type', '=', '2'],])
+                                ->latest()->paginate(10, ['*'], 'enabledTable');
          $disabledMembers = Member::where([
                                 ['status', '=', '0'],
-                                ['type', '=', '2'],
-                                ])->paginate(10, ['*'], 'disabledTable');
+                                ['type', '=', '2'],])
+                                ->latest()->paginate(10, ['*'], 'disabledTable');
                                 $memberType='Focal Members';
          return view('admin.members.viewAllMembers',compact('enabledMembers', 'disabledMembers', 'memberType'));
         }
@@ -1013,7 +1016,7 @@ public function deleteCircular($circularId){
               Storage::put('public/myAssets/FP', $req->imageFile);
               // delete old file
               Storage::delete('public/myAssets/FP/'.$saveFormData->imgpath);
-              
+
               $saveFormData->type = $req->memberType;
                     $saveFormData->name = $req->memberName;
                     $saveFormData->position = $req->memberPosition2;
@@ -1114,7 +1117,7 @@ public function deleteCircular($circularId){
 
 // CASE 4
 // ***************** if user only changed data other than member type or uploads image *****************
-            else{ 
+            else{
               if($req->memberType =='1'){
                 $saveFormData->type = $req->memberType;
                     $saveFormData->name = $req->memberName;
