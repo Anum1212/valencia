@@ -1,3 +1,39 @@
 body{
-    background: rgba(162, 163, 163, 0.185)
+    margin: 0px 55px 0px 55px;
+}
+
+#documentationHeading{
+  text-align: center;
+  color: #BD1616;
+}
+#documentationHeading h1{
+  font-size: 6em;
+}
+
+.sectionHeading{
+  text-decoration: underline;
+  color: #BD1616
+}
+
+.CRUD{
+  color: rgb(0, 99, 13)
+}
+
+.itemHeading{
+  color: rgb(0, 130, 172);
+}
+
+.item{
+  margin-bottom: 25px;
+}
+
+.itemVideo video{
+  border: 2px solid #BD1616;
+}
+
+hr{
+  border: none;
+  height: 1px;
+  color: rgb(58, 209, 73);
+  background-color:rgb(58, 209, 73);
 }
