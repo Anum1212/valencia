@@ -12,12 +12,12 @@
                          Announcement Div
   ********************************************************************
    -->
-
+@if (!empty($announcement))
 <div id="announcementDiv" class="col-lg-7 col-md-7 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
   <!-- Image Div -->
   @if($announcement->filetype=='3' || $announcement->filetype=='1')
   <div id="announcementImage" class="section col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    
+
     <img src={{ asset('storage/myAssets/announcement/'.$announcement->imgpath) }} />
   </div>
 
@@ -49,14 +49,16 @@
   @endif
 </div>
 </div>
-
+@else
+  <h1> No Such Record Exists </h1>
+@endif
 <!--
 ********************************************************************
                        Right Side Announcement Carousel
 ********************************************************************
+@if (!empty($update))
  -->
 <div id="announcementCarouselDiv" class="col-lg-2 col-md-2 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2" >
-  @if (!empty($update))
         <!-- large display carousel -->
         <div id="largeDisplayCarousel">
                   <div id="announcementLargeDisplayCarousel" class="carousel slide" data-ride="carousel">
@@ -176,4 +178,3 @@
         @endif
 </div>
 </div>
-
