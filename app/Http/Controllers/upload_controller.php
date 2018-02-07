@@ -150,6 +150,7 @@ if($saveAnnouncement->filetype == '1')
 {
   if($req->file('imageFile'))
   {
+    if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
     // delete old file
     Storage::delete('public/myAssets/announcement/'.$saveAnnouncement->imgpath);
     $saveAnnouncement->filetype = "1";
@@ -188,6 +189,7 @@ if($saveAnnouncement->filetype == '2')
 
   if($req->file('announcementFile'))
   {
+    if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
     Storage::delete('public/myAssets/announcement/'.$saveAnnouncement->filepath);
     $saveAnnouncement->filetype = "2";
     $saveAnnouncement->filepath = $req->announcementFile->hashName();
@@ -213,12 +215,14 @@ if($saveAnnouncement->filetype == '3')
 {
   if($req->file('imageFile'))
   {
+    if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
     Storage::delete('public/myAssets/announcement/'.$saveAnnouncement->imgpath);
     $saveAnnouncement->imgpath = $req->imageFile->hashName();
   }
 
   if($req->file('announcementFile'))
   {
+    if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
     Storage::delete('public/myAssets/announcement/'.$saveAnnouncement->filepath);
     $saveAnnouncement->filepath = $req->announcementFile->hashName();
   }
@@ -253,13 +257,20 @@ public function disableAnnouncement($announcementId){
 public function deleteAnnouncement($announcementId){
              $announcement = Announcement::find($announcementId);
 
-             if($announcement->filetype == 1)
-             Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
-             if($announcement->filetype == 2)
+             if($announcement->filetype == 1){
+               if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
+                  Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
+           }
+             if($announcement->filetype == 2){
+             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
-             if($announcement->filetype == 3)
+           }
+             if($announcement->filetype == 3){
+             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
               Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
+              if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
+           }
              $announcement->delete();
 
           return redirect()->action('upload_controller@viewAllAnnouncements');
@@ -268,7 +279,7 @@ public function deleteAnnouncement($announcementId){
 // ***************** Delete Specific Announcement Image *****************
 public function deleteAnnouncementImage($announcementId){
              $announcement = Announcement::find($announcementId);
-
+             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
              Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
 
 
@@ -291,7 +302,7 @@ public function deleteAnnouncementImage($announcementId){
 // ***************** Delete Specific Announcement File *****************
 public function deleteAnnouncementFile($announcementId){
              $announcement = Announcement::find($announcementId);
-
+             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
 
              // if no image
@@ -442,6 +453,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
               // Upload Image
               Storage::put('public/myAssets/achievements', $req->imageFile);
               // delete old file
+              if(File::exists('public/myAssets/achievements/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/achievements/'.$saveFormData->imgpath);
 
               $saveFormData->type = $req->imageType;
@@ -456,6 +468,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
               // Upload Image
               Storage::put('public/myAssets/onGoingProjects', $req->imageFile);
               // delete old file
+              if(File::exists('public/myAssets/onGoingProjects/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/onGoingProjects/'.$saveFormData->imgpath);
 
               $saveFormData->type = $req->imageType;
@@ -470,6 +483,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
               // Upload Image
               Storage::put('public/myAssets/gallery', $req->imageFile);
               // delete old file
+              if(File::exists('public/myAssets/gallery/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/gallery/'.$saveFormData->imgpath);
 
               $saveFormData->type = $req->imageType;
@@ -484,6 +498,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
               // Upload Image
               Storage::put('public/myAssets/slider', $req->imageFile);
               // delete old file
+              if(File::exists('public/myAssets/slider/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/slider/'.$saveFormData->imgpath);
 
               $saveFormData->type = $req->imageType;
@@ -504,6 +519,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('public/myAssets/achievements', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/onGoingProjects/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/onGoingProjects/'.$saveFormData->imgpath);
                     }
 
@@ -511,6 +527,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('achievements', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/gallery/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/gallery/'.$saveFormData->imgpath);
                     }
 
@@ -518,6 +535,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('public/myAssets/achievements', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/slider/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/slider/'.$saveFormData->imgpath);
                       }
 
@@ -535,6 +553,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                      // Upload Image
                       Storage::put('public/myAssets/onGoingProjects', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/achievements/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/achievements/'.$saveFormData->imgpath);
                     }
 
@@ -542,6 +561,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                      // Upload Image
                       Storage::put('public/myAssets/onGoingProjects', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/gallery/'.$saveFormData->imgpath))
                       Storage::delete('gallery/'.$saveFormData->imgpath);
                     }
 
@@ -549,6 +569,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                      // Upload Image
                       Storage::put('public/myAssets/onGoingProjects', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/slider/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/slider/'.$saveFormData->imgpath);
                     }
 
@@ -566,6 +587,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('public/myAssets/gallery', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/achievements/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/achievements/'.$saveFormData->imgpath);
                       }
 
@@ -573,6 +595,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('public/myAssets/gallery', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/onGoingProjects/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/onGoingProjects/'.$saveFormData->imgpath);
                      }
 
@@ -580,6 +603,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('public/myAssets/gallery', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/slider/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/slider/'.$saveFormData->imgpath);
                     }
 
@@ -597,12 +621,14 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                       // Upload Image
                       Storage::put('public/myAssets/slider', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/achievements/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/achievements/'.$saveFormData->imgpath);
                    }
                       if($saveFormData->type == '2'){  // (onGoingProjects)
                      // Upload Image
                       Storage::put('public/myAssets/slider', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/onGoingProjects/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/onGoingProjects/'.$saveFormData->imgpath);
                     }
 
@@ -610,6 +636,7 @@ Storage::put('public/myAssets/slider', $req->imageFile);
                      // Upload Image
                       Storage::put('public/myAssets/slider', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/gallery/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/gallery/'.$saveFormData->imgpath);
                     }
 
@@ -769,24 +796,28 @@ public function deleteImage($imageType, $imageId){
     $image = Image::find($imageId);
 
             if($imageType=='1'){
+              if(File::exists('public/myAssets/achievements/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/achievements/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllAchievementImages');
         }
 
             if($imageType=='2'){
+              if(File::exists('public/myAssets/onGoingProjects/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/onGoingProjects/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllOnGoingProjectImages');
         }
 
             if($imageType=='3'){
+              if(File::exists('public/myAssets/gallery/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/gallery/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllRandomImages');
         }
 
             if($imageType=='4'){
+              if(File::exists('public/myAssets/slider/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/slider/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllSliderImages');
@@ -843,6 +874,7 @@ public function deleteImage($imageType, $imageId){
                if($req->file('circularFile')){
               Storage::put('public/myAssets/circulars', $req->circularFile);
               // delete old file
+              if(File::exists('public/myAssets/circulars/'.$saveFormData->filepath))
               Storage::delete('public/myAssets/circulars/'.$saveFormData->filepath);
 
                     $saveFormData->filepath = $req->circularFile->hashName();
@@ -872,6 +904,7 @@ public function disableCircular($circularId){
 // ***************** Delete Specific Circular *****************
 public function deleteCircular($circularId){
              $circular = Circular::find($circularId);
+             if(File::exists('public/myAssets/circulars/'.$circular->filepath))
              Storage::delete('public/myAssets/circulars/'.$circular->filepath);
 
             $circular->delete();
@@ -997,6 +1030,7 @@ public function deleteCircular($circularId){
               // Upload Image
               Storage::put('public/myAssets/MC', $req->imageFile);
               // delete old file
+              if(File::exists('public/myAssets/MC/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/MC/'.$saveFormData->imgpath);
 
                     $saveFormData->type = $req->memberType;
@@ -1015,6 +1049,7 @@ public function deleteCircular($circularId){
               // Upload Image
               Storage::put('public/myAssets/FP', $req->imageFile);
               // delete old file
+              if(File::exists('public/myAssets/FP/'.$saveFormData->imgpath))
               Storage::delete('public/myAssets/FP/'.$saveFormData->imgpath);
 
               $saveFormData->type = $req->memberType;
@@ -1039,6 +1074,7 @@ public function deleteCircular($circularId){
                       // Upload Image
                       Storage::put('public/myAssets/MC', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/FP/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/FP/'.$saveFormData->imgpath);
                     }
 
@@ -1060,6 +1096,7 @@ public function deleteCircular($circularId){
                      // Upload Image
                       Storage::put('public/myAssets/FP', $req->imageFile);
                       // delete old file
+                      if(File::exists('public/myAssets/MC/'.$saveFormData->imgpath))
                       Storage::delete('public/myAssets/MC/'.$saveFormData->imgpath);
                     }
 
@@ -1179,6 +1216,7 @@ public function disableMember($memberType, $memberId){
 public function deleteMember($memberType, $memberId){
             if($memberType=='1'){
              $member = Member::find($memberId);
+             if(File::exists('public/myAssets/MC/'.$member->imgpath))
              Storage::delete('public/myAssets/MC/'.$member->imgpath);
 
             $member->delete();
@@ -1186,6 +1224,7 @@ public function deleteMember($memberType, $memberId){
         }
             if($memberType=='2'){
              $member = Member::find($memberId);
+             if(File::exists('public/myAssets/FP/'.$member->imgpath))
              Storage::delete('public/myAssets/FP/'.$member->imgpath);
 
             $member->delete();
