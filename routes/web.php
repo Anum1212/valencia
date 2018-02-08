@@ -15,7 +15,7 @@
 Route::get('/', 'view_controller@home');
 
 Route::get('/documentation', function (){
-    return view('documentation');  
+    return view('documentation');
 });
 
 // ***************** Announcement (Vistor routes) *****************
@@ -137,9 +137,11 @@ Route::get('/user/logout','Auth\LoginController@userLogout')->name('user.logout'
 // Return Admin View
 Route::prefix('admin')->group(function () {
     Route::get('/', 'upload_controller@index')->name('admin.dashboard');
+    Route::get('/profile', 'upload_controller@profile')->name('admin.profile');
+    Route::post('/saveprofile/{adminId}', 'upload_controller@saveProfile')->name('admin.save.profile');
     Route::get('/login', 'Auth\admin_controller@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\admin_controller@login')->name('admin.login.submit');
-    
+
     //admin password reset routes
     Route::post('/password/email','Auth\adminForgetPassword_controller@sendResetLinkEmail')->name('admin.password.email');
     Route::get('/password/reset','Auth\adminForgetPassword_controller@showLinkRequestForm')->name('admin.password.request');
