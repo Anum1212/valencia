@@ -14,8 +14,8 @@ Use App\Circular;
 Use App\Member;
 Use App\Message;
 Use Mail;
-Use App\mail\sendMail;
-Use App\mail\reply;
+Use App\Mail\sendMail;
+Use App\Mail\reply;
 Use Hash;
 
 class upload_controller extends Controller
