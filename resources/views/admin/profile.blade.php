@@ -52,11 +52,11 @@
     </div>
     <div class="form-group">
       <label for="password">Current Password</label>
-      <input type="text" class="form-control" id="currentPassword" name="currentPassword" autocomplete="off">
+      <input type="password" class="form-control" id="currentPassword" name="currentPassword" autocomplete="off">
     </div>
     <div class="form-group">
       <label for="password">New Password</label>
-      <input type="text" class="form-control" id="newPassword" name="newPassword" placeholder="minimum length 6" autocomplete="off">
+      <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="minimum length 6" autocomplete="off">
     </div>
     <div class="form-group">
       <button class="btn btn-primary" type="submit" name="submit" id="submit">Save Changes</button>
