@@ -134,6 +134,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
+                                  <li><a href="{{route('admin.profile')}}"> Edit Profile </a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -159,7 +160,6 @@
 ********************************************************************
  -->
 <div id="mainPageWrapper" class="container-fluid">
-
 <!--
 ********************************************************************
                            Header
