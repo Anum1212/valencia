@@ -54,11 +54,25 @@
     <!-- Functionality CRUD Section-->
     <div id="functionality" class="section">
       <div id="siteOverView">
-        <!-- Home Page --> <!-- -->
-        <div class="itemVideo"></div>
+        <!-- Home Page -->
+        <b class="itemHeading"><h4>Home Page</h4></b>
+        <div class="itemVideo">
+          <video width="650" controls>
+    <source src="/storage/myAssets/demo/homePage.mp4"  type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+        </div>
+        <br>
         <!-- Admin Page -->
-        <div class="itemVideo"></div>
+        <b class="itemHeading"><h4>Admin Page</h4></b>
+        <div class="itemVideo">
+          <video width="650" controls>
+    <source src="/storage/myAssets/demo/adminPage.mp4"  type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+        </div>
       </div>
+      <br>
       <h2 id="functionalityHeading" class="sectionHeading">The Project has the following <span class="CRUD">CRUD</span> operations present</h2>
 
       <!-- Create Read -->
