@@ -182,6 +182,27 @@
   Your browser does not support HTML5 video.
 </video></div>
     </div>
+
+    <!-- Members -->
+    <div class="item">
+    <b class="itemHeading"><h4>Members</h4></b>
+    <p>Members details can be edited, they can be moved to different member types (Committe, Focal)</p>
+    <div class="itemVideo">  <video width="650" controls>
+<source src="/storage/myAssets/demo/editMember.mp4"  type="video/mp4">
+Your browser does not support HTML5 video.
+</video></div>
+  </div>
+
+    <!-- Admin Profile -->
+    <div class="item">
+    <b class="itemHeading"><h4>Admin Profile</h4></b>
+    <p>Admin can edit their name, email or password</p>
+    <div class="itemVideo">  <video width="650" controls>
+<source src="/storage/myAssets/demo/adminProfile.mp4"  type="video/mp4">
+Your browser does not support HTML5 video.
+</video></div>
+  </div>
+
   </div>
 
 <hr>
