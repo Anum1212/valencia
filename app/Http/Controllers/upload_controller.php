@@ -16,6 +16,7 @@ Use App\Message;
 Use Mail;
 Use App\mail\sendMail;
 Use App\mail\reply;
+Use Hash;
 
 class upload_controller extends Controller
 {
@@ -30,6 +31,31 @@ class upload_controller extends Controller
   {
     return view('admin.addContent');
   }
+
+  public function profile()
+  {
+    $adminDetails = Auth::user();
+    return view('admin.profile', compact('adminDetails'));
+  }
+
+  public function saveProfile(Request $req, $adminId){
+    $adminDetails = Auth::user()->find($adminId);
+if($req->currentPassword){
+    if(Hash::check($req->currentPassword, $adminDetails->password)){
+      // check if password greater than 05 characters
+    $this->validate($req, [
+    'newPassword' => 'min:6',
+]);
+    $adminDetails->password = bcrypt($req->newPassword);
+  }
+  else
+  return redirect::back()->with('error', 'password not correct');
+}
+  $adminDetails->name = $req->name;
+  $adminDetails->email = $req->email;
+  $adminDetails->save();
+  return redirect::back()->with('message', 'Profile Edit Successful');
+}
     //  ******************************************
     //             Announcement Functions
     //  ******************************************
