@@ -37,3 +37,15 @@ hr{
   color: rgb(58, 209, 73);
   background-color:rgb(58, 209, 73);
 }
+
+@media screen and (max-width:600px){
+  .item .itemVideo video{
+    max-width: 300px;
+  }
+}
+
+@media screen and (min-width:601px){
+  .item .itemVideo video{
+    max-width: 650px;
+  }
+}
