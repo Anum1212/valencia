@@ -284,17 +284,17 @@ public function deleteAnnouncement($announcementId){
              $announcement = Announcement::find($announcementId);
 
              if($announcement->filetype == 1){
-               if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
+               if(File::exists('public/myAssets/announcement/'.$announcement->imgpath))
                   Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
            }
              if($announcement->filetype == 2){
-             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
+             if(File::exists('public/myAssets/announcement/'.$announcement->filepath))
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
            }
              if($announcement->filetype == 3){
-             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
+             if(File::exists('public/myAssets/announcement/'.$announcement->imgpath))
               Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
-              if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
+              if(File::exists('public/myAssets/announcement/'.$announcement->filepath))
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
            }
              $announcement->delete();
@@ -822,28 +822,28 @@ public function deleteImage($imageType, $imageId){
     $image = Image::find($imageId);
 
             if($imageType=='1'){
-              if(File::exists('public/myAssets/achievements/'.$saveFormData->imgpath))
+              if(File::exists('public/myAssets/achievements/'.$image->imgpath))
               Storage::delete('public/myAssets/achievements/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllAchievementImages');
         }
 
             if($imageType=='2'){
-              if(File::exists('public/myAssets/onGoingProjects/'.$saveFormData->imgpath))
+              if(File::exists('public/myAssets/onGoingProjects/'.$image->imgpath))
               Storage::delete('public/myAssets/onGoingProjects/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllOnGoingProjectImages');
         }
 
             if($imageType=='3'){
-              if(File::exists('public/myAssets/gallery/'.$saveFormData->imgpath))
+              if(File::exists('public/myAssets/gallery/'.$image->imgpath))
               Storage::delete('public/myAssets/gallery/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllRandomImages');
         }
 
             if($imageType=='4'){
-              if(File::exists('public/myAssets/slider/'.$saveFormData->imgpath))
+              if(File::exists('public/myAssets/slider/'.$image->imgpath))
               Storage::delete('public/myAssets/slider/'.$image->imgpath);
              $image->delete();
            return redirect()->action('upload_controller@viewAllSliderImages');
