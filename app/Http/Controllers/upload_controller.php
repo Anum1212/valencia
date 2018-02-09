@@ -305,7 +305,7 @@ public function deleteAnnouncement($announcementId){
 // ***************** Delete Specific Announcement Image *****************
 public function deleteAnnouncementImage($announcementId){
              $announcement = Announcement::find($announcementId);
-             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->imgpath))
+             if(File::exists('public/myAssets/announcement/'.$announcement->imgpath))
              Storage::delete('public/myAssets/announcement/'.$announcement->imgpath);
 
 
@@ -328,7 +328,7 @@ public function deleteAnnouncementImage($announcementId){
 // ***************** Delete Specific Announcement File *****************
 public function deleteAnnouncementFile($announcementId){
              $announcement = Announcement::find($announcementId);
-             if(File::exists('public/myAssets/announcement/'.$saveAnnouncement->filepath))
+             if(File::exists('public/myAssets/announcement/'.$announcement->filepath))
              Storage::delete('public/myAssets/announcement/'.$announcement->filepath);
 
              // if no image
