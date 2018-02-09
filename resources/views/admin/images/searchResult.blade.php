@@ -67,12 +67,12 @@
             <tr>
                 <td data-column="Title"><b>Title:</b> {{$searchResult->title}}
                     <br>
-                    @if ($searchResult->status==0) 
+                    @if ($searchResult->status==0)
                     <b>Status:</b> Not Displayed on site
-                    @endif 
-                    @if ($searchResult->status==1) 
-                    <b>Status:</b> Displayed on site 
-                    @endif 
+                    @endif
+                    @if ($searchResult->status==1)
+                    <b>Status:</b> Displayed on site
+                    @endif
                     @if ($searchResult->type==1)
                     <b>Upload Type:</b> Achievements Image
                     @endif
@@ -86,11 +86,13 @@
                     @if ($searchResult->type==4)
                     <b>Upload Type:</b> Slider Image
                     @endif
+                    <br>
+                    added on : {{\Carbon\Carbon::parse($searchResult->created_at)->format('d/m/Y')}}
                 </td>
 
                 <td data-column="Actions">
                     <a href="{{'/edit-image/'.$searchResult->type. '/' .$searchResult->id}}" class="btn btn-info" title="Edit">Read / Reply</a>
-                    
+
                     @if ($searchResult->status==0)
                     <form style="margin-top:15px;" action="{{'/enable-image/'.$searchResult->type. '/' .$searchResult->id}}" method="post">
                         {{csrf_field()}} {{method_field('PUT')}}
@@ -113,6 +115,6 @@
     @endif
 </div>
 @endsection
- 
+
 @section('script')
 @endsection

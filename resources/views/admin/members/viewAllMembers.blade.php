@@ -58,6 +58,7 @@
        <h2>Activated {{$memberType}} ({{count($enabledMembers)}}) </h2>
 </div>
 
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -91,6 +92,8 @@
         <br />
         Position: {{$enabledMember->position}}
          @endif
+         <br>
+         added on : {{\Carbon\Carbon::parse($enabledMember->created_at)->format('d/m/Y')}}
       </td>
       <td data-column="Actions" style="text-align:center;">
         <a href="{{'/edit-member/'.$enabledMember->type. '/' .$enabledMember->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
@@ -108,7 +111,7 @@
 </table>
 
 {{ $enabledMembers->appends(['disabledTable' => $disabledMembers->currentPage()])->links() }}
-
+</div>
 <!--
 ********************************************************************
                           Heading
@@ -125,7 +128,7 @@
                            Disabled Table
 ********************************************************************
  -->
-
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -136,7 +139,32 @@
   <tbody>
 @foreach ($disabledMembers as $disabledMember)
     <tr>
-      <td data-column="Title">{{$disabledMember->name}}</td>
+      <td data-column="Title">Name: {{$disabledMember->name}}
+        <br />
+        Type:
+        @if($disabledMember->type =='1') Committe Member
+        <br />
+        Position:
+        @if($disabledMember->position =='1') President
+        @endif
+        @if($disabledMember->position =='2') Vice President
+        @endif
+        @if($disabledMember->position =='3') Secretary
+        @endif
+        @if($disabledMember->position =='4') Joint Secretary
+        @endif
+        @if($disabledMember->position =='5') Finance Secretary
+        @endif
+        @if($disabledMember->position =='6') Executive Member
+        @endif
+        @endif
+        @if($disabledMember->type =='2') Focal Member
+        <br />
+        Position: {{$disabledMember->position}}
+         @endif
+         <br>
+         added on : {{\Carbon\Carbon::parse($disabledMember->created_at)->format('d/m/Y')}}
+      </td>
       <td data-column="Actions">
         <a href="{{'/edit-member/'.$disabledMember->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
         <form style="margin-top:15px;" action="{{'/enable-member/'.$disabledMember->type. '/' .$disabledMember->id}}" method="post">

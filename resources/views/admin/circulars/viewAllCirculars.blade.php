@@ -60,7 +60,7 @@
   <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
      <h2>Activated Circulars ({{count($enabledCirculars)}})</h2>
 </div>
-
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -71,7 +71,10 @@
   <tbody>
       @foreach ($enabledCirculars as $enabledCircular)
     <tr>
-      <td data-column="Title">{{$enabledCircular->title}}</td>
+      <td data-column="Title">{{$enabledCircular->title}}
+        <br>
+        added on : {{\Carbon\Carbon::parse($enabledCircular->created_at)->format('d/m/Y')}}
+      </td>
       <td data-column="Actions">
         <a href="{{'/edit-circular/' .$enabledCircular->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
                 <form style="margin-top:15px;" action="{{'/disable-circular/'.$enabledCircular->id}}" method="post">
@@ -105,6 +108,7 @@
     <h2>Deactivated Circulars ({{count($disabledCirculars)}})</h2>
   </div>
 
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -115,7 +119,10 @@
   <tbody>
 @foreach ($disabledCirculars as $disabledCircular)
     <tr>
-      <td data-column="Title">{{$disabledCircular->title}}</td>
+      <td data-column="Title">{{$disabledCircular->title}}
+        <br>
+        added on : {{\Carbon\Carbon::parse($disabledCircular->created_at)->format('d/m/Y')}}
+      </td>
       <td data-column="Actions">
         <a href="{{'/edit-circular/'.$disabledCircular->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
         <form style="margin-top:15px;" action="{{'/enable-circular/' .$disabledCircular->id}}" method="post">
@@ -131,6 +138,8 @@
   </tbody>
 </table>
 {{ $disabledCirculars->appends(['enabledTable' => $enabledCirculars->currentPage()])->links() }}
+</div>
+</div>
 </div>
 
 @endsection

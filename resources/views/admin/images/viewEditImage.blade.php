@@ -114,8 +114,9 @@
 								</button>
         </div>
 						</div>
-						</div>
 					</form>
+          added on : {{\Carbon\Carbon::parse($image->created_at)->format('d/m/Y')}}
+        </div>
 </div>
 
 @endsection

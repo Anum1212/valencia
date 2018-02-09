@@ -145,6 +145,7 @@
         </div>
 						</div>
 					</form>
+          added on : {{\Carbon\Carbon::parse($member->created_at)->format('d/m/Y')}}
 </div>
 </div>
 @endsection

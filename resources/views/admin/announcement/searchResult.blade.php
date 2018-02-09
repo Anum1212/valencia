@@ -73,6 +73,8 @@
                     @if ($searchResult->status==1)
                     <b>Status:</b> Shown on site
                     @endif
+                    <br>
+                    added on : {{\Carbon\Carbon::parse($searchResult->created_at)->format('d/m/Y')}}
                 </td>
                 <td data-column="Actions">
                     <a href="{{'/edit-announcement/'.$searchResult->id}}" class="btn btn-info" title="Edit">View / Edit</a>
@@ -99,6 +101,6 @@
     @endif
 </div>
 @endsection
- 
+
 @section('script')
 @endsection

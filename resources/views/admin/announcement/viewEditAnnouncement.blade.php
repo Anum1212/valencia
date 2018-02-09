@@ -149,6 +149,7 @@
 						</div>
 					</form>
 </div>
+added on : {{\Carbon\Carbon::parse($announcement->created_at)->format('d/m/Y')}}
 </div>
 
 @endsection

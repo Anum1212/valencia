@@ -60,6 +60,7 @@
      <h2>Activated Announcements ({{count($enabledAnnouncements)}})</h2>
 </div>
 
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -70,7 +71,10 @@
   <tbody>
       @foreach ($enabledAnnouncements as $enabledAnnouncement)
     <tr>
-      <td data-column="Title">{{$enabledAnnouncement->title}}</td>
+      <td data-column="Title">{{$enabledAnnouncement->title}}
+        <br>
+      added on : {{\Carbon\Carbon::parse($enabledAnnouncement->created_at)->format('d/m/Y')}}
+    </td>
       <td data-column="Actions">
         <a href="{{'/edit-announcement/'.$enabledAnnouncement->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
                 <form style="margin-top:15px;" action="{{'/disable-announcement/'.$enabledAnnouncement->id}}" method="post">
@@ -85,7 +89,7 @@
     @endforeach
   </tbody>
 </table>
-
+</div>
 {{ $enabledAnnouncements->appends(['disabledTable' => $disabledAnnouncements->currentPage()])->links() }}
 
 <!--
@@ -103,7 +107,7 @@
 ********************************************************************
                            Disabled Announcement Table
 ********************************************************************
- -->
+ --><div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -114,7 +118,10 @@
   <tbody>
 @foreach ($disabledAnnouncements as $disabledAnnouncement)
     <tr>
-      <td data-column="Title">{{$disabledAnnouncement->title}}</td>
+      <td data-column="Title">{{$disabledAnnouncement->title}}
+        <br>
+      added on : {{\Carbon\Carbon::parse($disabledAnnouncement->created_at)->format('d/m/Y')}}
+    </td>
       <td data-column="Actions">
         <a href="{{'/edit-announcement/'.$disabledAnnouncement->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
         <form style="margin-top:15px;" action="{{'/enable-announcement/'.$disabledAnnouncement->id}}" method="post">
@@ -130,6 +137,7 @@
   </tbody>
 </table>
 {{ $disabledAnnouncements->appends(['enabledTable' => $enabledAnnouncements->currentPage()])->links() }}
+</div>
 </div>
 @endsection
 

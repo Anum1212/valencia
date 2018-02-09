@@ -59,6 +59,7 @@
 <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
      <h2>Activated {{$imageType}} ({{count($enabledImages)}})</h2>
 </div>
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -69,7 +70,10 @@
   <tbody>
       @foreach ($enabledImages as $enabledImage)
     <tr>
-      <td data-column="Title">Title: {{$enabledImage->title}} </td>
+      <td data-column="Title">Title: {{$enabledImage->title}}
+        <br>
+      added on : {{\Carbon\Carbon::parse($enabledImage->created_at)->format('d/m/Y')}}
+    </td>
       <td data-column="Actions">
         <a href="{{'/edit-image/'.$enabledImage->type. '/' .$enabledImage->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
                 <form style="margin-top:15px;" action="{{'/disable-image/'.$enabledImage->type. '/' .$enabledImage->id}}" method="post">
@@ -84,7 +88,7 @@
     @endforeach
   </tbody>
 </table>
-
+</div>
 {{ $enabledImages->appends(['disabledTable' => $disabledImages->currentPage()])->links() }}
 
 <!--
@@ -103,7 +107,7 @@
                            Disabled Table
 ********************************************************************
  -->
-
+<div id="table" class="col-md-12 col-sm-12 col-xs-12">
 <table>
   <thead>
     <tr>
@@ -114,7 +118,10 @@
   <tbody>
 @foreach ($disabledImages as $disabledImage)
     <tr>
-      <td data-column="Title">Title: {{$disabledImage->title}}</td>
+      <td data-column="Title">Title: {{$disabledImage->title}}
+        <br>
+      added on : {{\Carbon\Carbon::parse($disabledImage->created_at)->format('d/m/Y')}}
+    </td>
       <td data-column="Actions">
         <a href="{{'/edit-image/' .$disabledImage->type. '/'. $disabledImage->id}}" class="btn btn-info" title="Edit" >View / Edit</a>
         <form style="margin-top:15px;" action="{{'/enable-image/'.$disabledImage->type. '/' .$disabledImage->id}}" method="post">

@@ -66,29 +66,31 @@
             @foreach ($searchResults as $searchResult)
             <tr>
                     <td data-column="Title"><b>Name:</b> {{$searchResult->name}}
-                    <br> 
+                    <br>
                     @if ($searchResult->status==0)
-                    <b>Status:</b> Not Displayed on site 
-                    @endif 
+                    <b>Status:</b> Not Displayed on site
+                    @endif
                     @if ($searchResult->status==1)
-                    <b>Status:</b> Displayed on site 
-                    @endif 
+                    <b>Status:</b> Displayed on site
+                    @endif
                     @if ($searchResult->type==1)
                     <b>Upload Type:</b> Managment Committe
                     @endif
                     <br> @if ($searchResult->type==2)
                     <b>Member Type:</b> Focal Member
-                    @endif 
+                    @endif
+                    <br>
+                    added on : {{\Carbon\Carbon::parse($searchResult->created_at)->format('d/m/Y')}}
                     </td>
                     <td data-column="Actions">
-                    <a href="{{'/edit-member/'.$searchResult->type. '/' .$searchResult->id}}" class="btn btn-info" title="Edit">View / Edit</a>                    
+                    <a href="{{'/edit-member/'.$searchResult->type. '/' .$searchResult->id}}" class="btn btn-info" title="Edit">View / Edit</a>
                     @if ($searchResult->status==0)
                     <form style="margin-top:15px;" action="{{'/enable-member/'.$searchResult->type. '/' .$searchResult->id}}" method="post">
                         {{csrf_field()}} {{method_field('PUT')}}
                         <button type="submit" class="btn btn-warning">Enable Member</button>
                     </form>
-                    @endif 
-                    
+                    @endif
+
                     @if ($searchResult->status==1)
                     <form style="margin-top:15px;" action="{{'/disable-member/'.$searchResult->type. '/' .$searchResult->id}}" method="post">
                         {{csrf_field()}} {{method_field('PUT')}}
@@ -106,6 +108,6 @@
     @endif
 </div>
 @endsection
- 
+
 @section('script')
 @endsection

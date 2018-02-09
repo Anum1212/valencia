@@ -48,6 +48,7 @@
   </div>
   @endif
 </div>
+<span style="color:grey">added on : {{ \Carbon\Carbon::parse($announcement->created_at)->format('d/m/Y')}}</span>
 </div>
 @else
   <h1> No Such Record Exists </h1>

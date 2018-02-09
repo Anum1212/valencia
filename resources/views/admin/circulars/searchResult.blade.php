@@ -66,22 +66,24 @@
             @foreach ($searchResults as $searchResult)
             <tr>
                 <td data-column="Title"><b>Title:</b> {{$searchResult->title}}
-                    <br> 
+                    <br>
                     @if ($searchResult->status==0)
-                    <b>Status:</b> Not shown on site 
-                    @endif 
-                    @if ($searchResult->status==1)
-                    <b>Status:</b> Shown on site 
+                    <b>Status:</b> Not shown on site
                     @endif
+                    @if ($searchResult->status==1)
+                    <b>Status:</b> Shown on site
+                    @endif
+                    <br>
+                    added on : {{\Carbon\Carbon::parse($searchResult->created_at)->format('d/m/Y')}}
                 </td>
                 <td data-column="Actions">
-                    <a href="{{'/edit-circular/'.$searchResult->id}}" class="btn btn-info" title="Edit">View / Edit</a>                    
+                    <a href="{{'/edit-circular/'.$searchResult->id}}" class="btn btn-info" title="Edit">View / Edit</a>
                     @if ($searchResult->status==0)
                     <form style="margin-top:15px;" action="{{'/enable-circular/'.$searchResult->id}}" method="post">
                         {{csrf_field()}} {{method_field('PUT')}}
                         <button type="submit" class="btn btn-warning">Enable Circular</button>
                     </form>
-                    @endif 
+                    @endif
                     @if ($searchResult->status==1)
                     <form style="margin-top:15px;" action="{{'/disable-circular/'.$searchResult->id}}" method="post">
                         {{csrf_field()}} {{method_field('PUT')}}
@@ -99,6 +101,6 @@
     @endif
 </div>
 @endsection
- 
+
 @section('script')
 @endsection

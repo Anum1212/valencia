@@ -71,14 +71,15 @@
                     </label>
                 </div>
             </div>
+          </div>
             <div class="col-md-8 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
 									Save Changes
 								</button>
 							</div>
-						</div>
 					</form>
 </div>
+added on : {{\Carbon\Carbon::parse($circular->created_at)->format('d/m/Y')}}
 </div>
 
 @endsection
