@@ -58,7 +58,7 @@
  -->
 
   <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-     <h2>Activated Circulars</h2>
+     <h2>Activated Circulars ({{count($enabledCirculars)}})</h2>
 </div>
 
 <table>
@@ -102,7 +102,7 @@
 ********************************************************************
  -->
   <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-    <h2>Deactivated Circulars</h2>
+    <h2>Deactivated Circulars ({{count($disabledCirculars)}})</h2>
   </div>
 
 <table>

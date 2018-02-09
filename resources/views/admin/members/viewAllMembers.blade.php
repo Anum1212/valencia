@@ -55,7 +55,7 @@
 <div id="membersTable" class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
 
   <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-       <h2>Activated {{$memberType}}</h2>
+       <h2>Activated {{$memberType}} ({{count($enabledMembers)}}) </h2>
 </div>
 
 <table>
@@ -116,7 +116,7 @@
  -->
 
  <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-      <h2>deactivated {{$memberType}}</h2>
+      <h2>deactivated {{$memberType}} ({{count($disabledMembers)}})</h2>
 </div>
 
 

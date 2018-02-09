@@ -57,7 +57,7 @@
 <div id="imageTable" class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
 
 <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-     <h2>Activated {{$imageType}}</h2>
+     <h2>Activated {{$imageType}} ({{count($enabledImages)}})</h2>
 </div>
 <table>
   <thead>
@@ -94,7 +94,7 @@
  -->
 
 <div id="heading" class="col-md-12 col-sm-12 col-xs-12">
-     <h2>Deactivated {{$imageType}}</h2>
+     <h2>Deactivated {{$imageType}} ({{count($disabledImages)}})</h2>
 </div>
 
 

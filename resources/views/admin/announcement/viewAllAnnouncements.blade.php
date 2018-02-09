@@ -57,7 +57,7 @@
 <div id="announcementTable" class="col-md-offset-3 col-md-6 col-sm-12 col-xs-12">
 
 <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-     <h2>Activated Announcements</h2>
+     <h2>Activated Announcements ({{count($enabledAnnouncements)}})</h2>
 </div>
 
 <table>
@@ -95,7 +95,7 @@
  -->
 
 <div id="tableHeading" class="col-md-12 col-sm-12 col-xs-12">
-     <h2>Deactivated Announcements</h2>
+     <h2>Deactivated Announcements({{count($disabledAnnouncements)}})</h2>
 </div>
 
 
